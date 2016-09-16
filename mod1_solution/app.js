@@ -18,6 +18,7 @@ function LunchCheckController($scope, $filter) {
     $scope.message = calc_numb_items(for_lunch);
   };
   var calc_numb_items = function(list_items) {
+    list_items = list_items || "";
   	console.log(list_items);
   	var list_array = list_items.split(",");
   	console.log(list_array);
