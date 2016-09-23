@@ -2,25 +2,24 @@
 'use strict';
 
 angular.module('ShoppingListApp', [])
-.controller('ShoppingListBuyController', ShoppingListBuyController)
-.controller('ShoppingListShowController', ShoppingListShowController)
+.controller('ToBuyShoppingController', ToBuyShoppingController)
+.controller('AlreadyBoughtShoppingController', AlreadyBoughtShoppingController)
 .service('ShoppingListService', ShoppingListService);
 
-ShoppingListBuyController.$inject = ['ShoppingListService'];
-function ShoppingListBuyController(ShoppingListService) {
+ToBuyShoppingController.$inject = ['ShoppingListService'];
+function ToBuyShoppingController(ShoppingListService) {
   var itemBuy = this;
 
   itemBuy.items = ShoppingListService.getItems();
 
   itemBuy.removeItem = function (index) {
-    console.log(index)
     ShoppingListService.removeItem(index);
   }
 }
 
 
-ShoppingListShowController.$inject = ['ShoppingListService'];
-function ShoppingListShowController(ShoppingListService) {
+AlreadyBoughtShoppingController.$inject = ['ShoppingListService'];
+function AlreadyBoughtShoppingController(ShoppingListService) {
   var showList = this;
 
   showList.items = ShoppingListService.getItemsBought();

@@ -4,8 +4,6 @@
     <title>Shopping List Check Off</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <script src="app/angular.min.js"></script>
-    <script src="app/app.js"></script>
     <style>
       .emptyMessage {
         font-weight: bold;
@@ -31,7 +29,7 @@
   <div class="row">
 
     <!-- To Buy List -->
-    <div class="col-md-6" ng-controller="ShoppingListBuyController as itemBuy">
+    <div class="col-md-6" ng-controller="ToBuyShoppingController as itemBuy">
      <h2>To Buy:</h2>
      <ul>
         <li ng-repeat="item in itemBuy.items">Buy {{item.quantity}} {{item.name}}
@@ -40,18 +38,20 @@
             </button>
         </li>
      </ul>
-     <div class="emptyMessage" ng-hide="itemBuy.items.length > 0">Everything is bought!</div>
+     <div class="emptyMessage" ng-if="itemBuy.items.length < 1">Everything is bought!</div>
     </div>
 
     <!-- Already Bought List -->
-    <div class="col-md-6" ng-controller="ShoppingListShowController as showList">
-     <h2>Already Bought:</h2>{{showList.items}}
+    <div class="col-md-6" ng-controller="AlreadyBoughtShoppingController as showList">
+     <h2>Already Bought:</h2>
      <ul>
-       <li>Bought 10 cookies</li>
+        <li ng-repeat="item in showList.items">Bought {{item.quantity}} {{item.name}}</li>
      </ul>
-     <div class="emptyMessage">Nothing bought yet.</div>
+     <div class="emptyMessage" ng-if="showList.items.length < 1">Nothing bought yet.</div>
     </div>
   </div>
 </div>
+    <script src="app/angular.min.js"></script>
+    <script src="app/app.js"></script>
 </body>
 </html>
